@@ -3,11 +3,15 @@ const ul = document.querySelector('ul');
 
 
 const getDadJoke = async () => {
-    const config = { headers: { Accept: 'application/json' } }
-    const response = await axios.get('https://icanhazdadjoke.com/', config)
-    console.log(response.data.joke)
-    return response.data.joke;
+    try {
+        const config = { headers: { Accept: 'application/json' } }
+        const response = await axios.get('https://icanhazdadjoke.com/', config)
+        return response.data.joke;
+    } catch (e) {
+        return "NO JOKES AVAILABLE! SORRY"
+    }
 }
+
 
 const addNewJoke = async () => {
     const jokeTxt = await getDadJoke()
